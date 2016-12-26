@@ -28,7 +28,7 @@ static void exitWithUsage(int type) {
 	printf("Usage: (0-9) (0-9) (0-9) (0-9)\n");
 	switch (type) {
 		case(0):
-			printf("Error: program requires exactly 4 arguments\n");
+			printf("Error: program requires exactly 4 integer arguments\n");
 			break;
 		case(1):
 			printf("Error: Arguments must be integer numbers\n");
