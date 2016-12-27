@@ -20,3 +20,8 @@ Now the numbers are "2 2 6"
 
 A simple program to find solutions to sets of train game numbers.
 
+## Our approach?
+
+We want to use a binary search tree and reverse polish notation (RPN) to brute-force all possibilities.
+
+A Train Game algorithm is currently an open problem in computing.
