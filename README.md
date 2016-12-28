@@ -16,6 +16,8 @@ Now the numbers are "2 2 6"
 
 2 + 2 + 6 = 10
 
+And therefore we win the game.
+
 ## What's this program?
 
 A simple program to find solutions to sets of train game numbers.
