@@ -2,8 +2,8 @@
 #include <stdio.h>
 
 typedef struct _stringarr {
-    char string[8];
-}
+    char stringarr[8];
+} stringarr;
 
 static void exitWithUsage(int type);
 
