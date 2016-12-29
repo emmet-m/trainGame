@@ -1,10 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-typedef struct _stringarr {
-    char stringarr[8];
-} stringarr;
-
 static void exitWithUsage(int type);
 
 int main(int argc, char * argv[]) {
