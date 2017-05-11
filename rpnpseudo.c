@@ -4,18 +4,7 @@
 #include <stdio.h>
 #include <string.h>
 
-struct stringarr{
-	string[8];
-};
-void generator(char * string, int numbers, int symbols, int numonstack);
-
-int main(){
-	char string[] = "";
-	generator(string, 4, 3, 0);
-}
-
-
-void generator(char * string, int numbers, int symbols, int numonstack){
+void generator(char * string, int numbers, int symbols, int numonstack) {
 	printf("memes\n");
 	char string1[10]; strcpy(string1, string);
 	char string2[10]; strcpy(string2, string);
