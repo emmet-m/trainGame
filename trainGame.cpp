@@ -1,5 +1,8 @@
 #include <cstdio>
 #include <cstdlib>
+#include <iostream>
+#include <vector>
+#include <algorithm>
 
 static void exitWithUsage(int type);
 
@@ -8,17 +11,33 @@ int main(int argc, char * argv[]) {
     // Check that the user has entered 4 arguments
     if (argc != 5) exitWithUsage(0);
 
-    // extract our 4 arguments
-    int a, b, c, d;
+    int amountNumbers = argc-1; // the amount of numbers we're using
+
+    // extract our arguments
+    std::vector<int> values;
 
     // If failed to scan for a number, exit and print program usage
-    if(! std::sscanf(argv[1], "%d", &a)) exitWithUsage(1);
-    if(! std::sscanf(argv[2], "%d", &b)) exitWithUsage(1);
-    if(! std::sscanf(argv[3], "%d", &c)) exitWithUsage(1);
-    if(! std::sscanf(argv[4], "%d", &d)) exitWithUsage(1);
+    for(int i = 0; i < amountNumbers; i++){
+      int a;
+      if(! std::sscanf(argv[i + 1], "%d", &a)) exitWithUsage(1);
+      values.push_back(a);
+    }
 
-    // Display the user input
-    printf("Numbers: %d %d %d %d\n", a, b, c, d);
+    int operators[] = {'+', '-', '*', '/'};
+
+    // N! permuations of input
+    while (std::next_permutation(values.begin(), values.end())){
+      // N - 1 operators to be generated
+      // Method: have an N-1 sized array
+      // There are 4 operators, so we map numbers 0-3 to an operator
+      // Roll along incrementing % 4
+      int numOps = amountNumbers - 1;
+      int usedOps[numOps];
+      std::fill(usedOps, usedOps + numOps, 0);
+      for (int i =0; i < numOps; i++) {
+
+      }
+    }
 
     return 0;
 }
