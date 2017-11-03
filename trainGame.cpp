@@ -4,7 +4,13 @@
 #include <vector>
 #include <algorithm>
 
+#define NUM_OPERATIONS 4
+
+char operators[] = {'+', '-', '*', '/'};
+
 static void exitWithUsage(int type);
+static void permutateOperations(int remainder, std::vector<char>  ops, std::vector<int> numbers);
+static void solve(std::vector<int> numbers, std::vector<char> operations);
 
 int main(int argc, char * argv[]) {
 
@@ -23,23 +29,39 @@ int main(int argc, char * argv[]) {
       values.push_back(a);
     }
 
-    int operators[] = {'+', '-', '*', '/'};
-
     // N! permuations of input
     while (std::next_permutation(values.begin(), values.end())){
-      // N - 1 operators to be generated
-      // Method: have an N-1 sized array
-      // There are 4 operators, so we map numbers 0-3 to an operator
-      // Roll along incrementing % 4
-      int numOps = amountNumbers - 1;
-      int usedOps[numOps];
-      std::fill(usedOps, usedOps + numOps, 0);
-      for (int i =0; i < numOps; i++) {
-
-      }
+      // Generate our N-1 operations
+      std::vector<char> usedOps;
+      // recursively solve
+      permutateOperations(amountNumbers - 1, usedOps, values);
     }
 
     return 0;
+}
+
+// We have to interleave the operations and numbers!
+// Any permutation where the first two elements are numbers is a valid permutation.
+// So, we shuffle like that
+static void solve(std::vector<int> numbers, std::vector<char> operations){
+}
+
+// N - 1 operators to be generated
+// Method: have an N-1 sized array
+// There are 4 operators, so we map numbers 0-3 to an operator
+// Each layer of recursion does all 4 operations
+static void permutateOperations(int remainder, std::vector<char> ops, std::vector<int> numbers){
+  if (remainder == 0) {
+    // Now we can evaluate, we have n-1 operations
+    solve(ops, numbers);
+  } else {
+    // keep going
+    for (int currOp = 0; currOp < NUM_OPERATIONS; currOp++) {
+      ops.push_back(operators[currOp]);
+      permutateOperations(remainder - 1, ops, numbers);
+      ops.pop_back();
+    }
+  }
 }
 
 static void exitWithUsage(int type) {
