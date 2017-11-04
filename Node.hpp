@@ -30,6 +30,7 @@ public:
   // (and NO operator), or an operator (+ * / -). If the operator is provided, the
   // node is assumed to be an operator.
   Node(int num, char oper='0');
+  ~Node();
 };
 
 #endif

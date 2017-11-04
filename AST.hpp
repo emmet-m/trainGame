@@ -22,7 +22,7 @@ public:
   void print();
   // Contructor that takes an RPN string, and builds an AST if it's valid
 	AST(std::string format);
-	~AST();
+	~AST() = default;
 };
 
 #endif

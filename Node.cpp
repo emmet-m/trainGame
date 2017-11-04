@@ -13,8 +13,12 @@ int Node::solve() {
     case ('-'):
       return this->left->solve() - this->right->solve();
     case ('*'):
-      return this->left->solve() * this->right->solve();
+      return (this->left->solve())*(this->right->solve());
     case ('/'):
+      // Don't divide by 0
+      if (this->right->solve() == 0) {
+        throw 0;
+      }
       return this->left->solve() / this->right->solve();
     default:
       break;
@@ -64,4 +68,11 @@ Node::Node(int num, char oper) {
   this->op = oper;
   this->left = NULL;
   this->right = NULL;
+}
+
+Node::~Node(){
+  if (this->right != NULL) {
+    delete this->right;
+    delete this->left;
+  }
 }
