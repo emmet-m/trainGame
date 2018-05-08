@@ -111,7 +111,7 @@ permute(numbers, ops, 0, newn);
 
 static std::vector<std::string> permute(std::vector<int> numbers, std::vector<char> ops, int x, std::vector<std::string > solution){
 	//if we have 2 or more numbers in there already we may put in an operator
-	if(numbers.size() == 0 && ops.size() ==0 ) return solution;
+	if(numbers.size() == 0 && ops.size() ==0 ) return solution; //just edit this to plug the result string into the right thing and we're done
 	if(x >= 2 && ops.size() >0){
 		for( int i = 0; i < ops.size(); i++){
 			std::vector<char> ops2 = ops;
