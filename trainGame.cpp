@@ -94,7 +94,9 @@ static void solve(std::vector<int> numbers, std::vector<char> operations){
 static void permutateOperations(int remainder, std::vector<char> ops, std::vector<int> numbers){
   if (remainder == 0) {
     // Now we can evaluate, we have n-1 operations
-    solve(numbers, ops);
+//std::vector<Node*> nstring = std::vector<Node*>();    
+std::vector<std::string>  = std::vector< std::string >();
+permute(numbers, ops, 0, newn);
   } else {
     // keep going
     for (int currOp = 0; currOp < NUM_OPERATIONS; currOp++) {
@@ -103,8 +105,32 @@ static void permutateOperations(int remainder, std::vector<char> ops, std::vecto
       ops.pop_back();
     }
   }
+
+		
 }
 
+static std::vector<std::string> permute(std::vector<int> numbers, std::vector<char> ops, int x, std::vector<std::string > solution){
+	//if we have 2 or more numbers in there already we may put in an operator
+	if(numbers.size() == 0 && ops.size() ==0 ) return solution;
+	if(x >= 2 && ops.size() >0){
+		for( int i = 0; i < ops.size(); i++){
+			std::vector<char> ops2 = ops;
+			std::vector< std::String> solution2 = solution;
+			ops2.erase(ops2.begin()+i);
+			
+			permute(numbers, ops2, x-2, solution2 + ops2[i]);
+		}
+	}
+	if(numbers.size() > 0){
+		for(int i = 0; i < numbers.size(); i++){
+			std::vector<int> numbers2 = numbers;
+			std::vector<std::string> solution2 = solution;
+			numbers2.erase(numbers2.begin()+i);
+			permute(numbers2, ops, x+1, solution2+ numbers2[i]);
+		}
+	}
+
+}
 static void exitWithUsage(int type) {
   // Print general usage
   printf("Usage: (0-9) (0-9) (0-9) (0-9)\n");
